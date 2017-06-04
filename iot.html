@@ -1,0 +1,145 @@
+<html>
+<style>
+body
+{
+  background-image: url("download1.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+	}
+	</body>
+	</style>
+<center><p><font size=20 color=white>Medical Report Form</font></p></center>
+
+<strong>Name:</strong><input type="text" name="name1" id="name1" >
+<br></br>
+<strong>Age:</strong>
+	<br><input type="radio"name="myRadio">0-10</br>
+    <br><input type="radio" name="myRadio">11-17</br>
+    <br><input type="radio" name="myRadio">17-30</br>
+    <br><input type="radio" name="myRadio">30-45</br>
+	<br><input type="radio" name="myRadio">45 and above</br>
+	<span id="gen">
+<strong><br>Gender:</strong>
+<input type="radio" name="gender" value="male"> Male
+<input type="radio" name="gender" value="female"> Female
+</span>
+	<br><strong>Bloodgroup:</strong> 
+	<select> 
+	<option value=A+ve>A+ve</option>
+	<option value=A-ve>A-ve</option>
+	<option value=B+ve>B+ve</option>
+	<option value=B-ve>B-ve</option>
+	<option value=O+ve>O+ve</option>
+	<option value=O-ve>O-ve</option>
+	<option value=A1+ve>A1+ve</option>
+	<option value=AB+ve>AB+ve</option>
+	<option value=A1-ve>A1-ve</option>
+	<option value=AB-ve>AB-ve</option>
+	<option value=A1B+ve>A1B+ve</option>
+	<option value=A1B-ve>A1B-ve</option>
+    </Select></br>
+	<br><strong>Temperature:</strong>
+	<select>
+	<option value=98F>98F</option>
+	<option value=99F>99F</option>
+	<option value=100F>100F</option>
+	<option value=101F>101F</option>
+	<option value=102F>102F</option>
+	<option value=103F>103F</option>
+	<option value=104F>104F</option>
+	<option value=105F>105F</option>
+	</select></br>
+	<br><strong>Weight:</strong><input type="text" weight=fweight></br>
+	
+<table class="maintable">
+            	<tr style="line-height:50px;">
+                	<td><strong>Diagonasis</strong></td>
+                    <td>:</td>
+                    <td>
+                    	<select id="categories">
+                            <option values="">--Select--</option>
+                            <option> Fever</option>
+                          <option> Cold</option>
+						  <option> Stomach Pain </option>
+						  <option> Diarrhoea</option>
+                          <option> Others</option>  
+                        </select>
+                    </td>
+                </tr>
+                <tr style="line-height:20px;">
+                	<td><strong>Tablets</strong></td>
+                    <td>:</td>
+                    <td>
+                    	<select style="float:left;" id="subcats">
+                        </select>
+                    </td>
+    </tr>
+</table>
+	<center><input type =submit value="submit" style="border:solid 2px #333333"/></center>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+</script>
+<script>
+ var fev = [
+				{display: "Acetaminophen(1500mg)", value: "Acetaminophen" },
+				{display: "Calpol(1000mg)", value: "Calpol" },
+				{display: "Aspirin(1850mg)", value: "Aspirin" },
+				{display: "Ketoprofen(2015mg)", value: "Ketoprofen" }];
+   
+			var col = [
+				{display: "Nasal decongestants(1113mg)", value: "Nasal decongestants" },
+				{display: "Cold Act(1200mg)", value: "Cold Act" },
+				{display: "Cough suppressants(2310mg)", value: "Cough suppressants" },
+				{display: "Antihistamines(1500mg)", value: "Antihistamines" }];
+				
+			var stp = [
+				{display: "Aspirin(1000mg)", value: "Aspirin" },
+				{display: "Ibuprofen(1550mg)", value: "Ibuprofen" },
+				{display: "Analgesics(1250mg)", value: "Analgesics" },
+				{display: "Naproxen sodium and naproxen(2330mg)", value: "Non-Naproxen sodium and naproxen" }];
+				var dia = [
+				{display: "Lomotil oral(2500mg)", value: "Lomotil oral" },
+				{display: "Diphenoxylate-atropine oral(2750mg)", value: "Diphenoxylate-atropine oral" },
+				{display: "Pepto-Bismol oral(2345mg)", value: "Pepto-Bismol oral" },
+				{display: "loperamide oral(2450mg)", value: "loperamide oral" }];
+$("#categories").change(function() {
+   					 var parent = $(this).val();
+						switch(parent){
+							case 'Fever':
+								 list(fev);
+								break;
+							case 'Cold':
+								 list(col);
+								break;             
+							case 'Stomach Pain':
+								 list(stp);
+								break; 
+							case 'Diarrhoea':
+								 list(dia);
+								break; 
+							case 'others':
+								 list(othr);
+								break; 
+							default: //default child option is blank
+								$("#subcats").html('');  
+								break;
+							   }
+				});
+				
+				function list(array_list)
+				{
+					$("#subcats").html(""); //reset child options
+					$(array_list).each(function (i) { //populate child options
+					$("#subcats").append("<option value=\""+array_list[i].value+"\">"+array_list[i].display+"</option>");
+					});
+				}
+				/*function validate() 
+				{
+                  //var txt = document.getElementById("name1");
+				  document.write(Data Uploaded Successfully);
+				  
+                 }*/
+                
+	</script>			
+
+</html>
